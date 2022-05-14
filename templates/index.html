@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="title" content="ip address locator">
+    <meta name="description" content="website that lets you track ip address, track location of IP address quickly">
+    <meta name="keywords" content="ip,locator,ip-locator-,ip,address finder,address,what is my ip ?,what's my ip,my ip">
+    <meta name="robots" content="index, nofollow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    
+    <meta name="author" content="Ayush Kunbi">
+
+    <title>IPTM</title>
+    {% load static %}
+    <!--local stylesheet-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  <!--Jquery CDN-->
+    <!--Bootstrap CDN-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!--font awesome CDN-->
+    <script src="https://kit.fontawesome.com/5de3ed83f2.js" crossorigin="anonymous"></script>
+    <!--Favicon-->
+    <link rel="shortcut icon" href="{% static 'image/favicon.png' %}">
+
+
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-expand-md py-3 navbar-light shadow-sm">
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          
+          <li class="nav-item">
+            <a class="nav-link text-white " href="#">IP Tracker</a>
+          </li>
+        </ul>
+        
+      </div>
+    
+    </nav>
+
+</head>
+
+<body>
+<div id="bgimg">
+
+<div id="searchbar">
+  <form  method="GET">
+  <div class="row no-gutters mt-3 align-items-center">
+    <div class="col col-md-4">
+        <input class="form-control form-control-lg border-secondary rounded-pill pr-5" autocomplete="off" name="ip_address" id="ip_address" type="text" placeholder="Search IP" aria-label="Search" required>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-outline-light text-dark border-0 rounded-pill ml-n5" type="submit">
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+    <div id="ipp" class="container-fluid">
+        <div class="container">
+            <br>
+    <h3 class="text-center detection">IP Address Detected : <b>{{ data.ip }}</b></h3>
+    <br>
+</div>
+    </div>
+
+    <div class="shadow-lg p-3 mb-5 bg-body rounded">
+<div id="glasstb" class="container-fluid">
+    
+  <center>
+    <!--table to show IP's data-->
+<table class="table table-hover table-responsive-md text-center">
+
+    <thead>
+    <tr>
+            <th class="text-light">Attributes</th>
+            <th class="text-light">Data</th>
+
+    </tr>
+
+    </thead>
+
+
+    <tbody>
+    <tr>
+        <td>Address</td>
+        <td>{{data.ip}}</td>
+    </tr>
+
+    <tr>
+        <td>City</td>
+        <td><i class="fa fa-info-circle"></i><a href="{{page_link}}" target="_blank" rel="noopener">{{data.city}}</a> </td>
+    </tr>
+    <tr>
+        <td>Postal</td>
+        <td>{{data.postal}}</td>
+    </tr>
+
+    <tr>
+        <td>Region</td>
+        <td>{{data.region}}</td>
+    </tr>
+
+
+    <tr>
+        <td>Country Name</td>
+        <td>{{data.country_name}}</td>
+    </tr>
+    <tr>
+        <td>Country Code</td>
+        <td>{{data.country_code}}</td>
+    </tr>
+    <tr>
+      <td>Continent</td>
+      <td>{{data.continent_code}}</td>
+    </tr>
+    <tr>
+        <td>Country Capital</td>
+        <td>{{data.country_capital}}</td>
+    </tr>
+
+    <tr>
+        <td>Organisation</td>
+        <td>{{data.org}}</td>
+    </tr>
+    <tr>
+        <td>Latitude</td>
+        <td>{{data.latitude}}</td>
+    </tr>
+
+    <tr>
+        <td>Longitude</td>
+        <td>{{data.longitude}}</td>
+    </tr>
+     <tr>
+        <td>Timezone</td>
+        <td>{{data.timezone}}</td>
+    </tr>
+     <tr>
+        <td>Country Calling Code</td>
+        <td>{{data.country_calling_code}}</td>
+    </tr>
+     <tr>
+        <td>Currency</td>
+        <td>{{data.currency}}</td>
+    </tr>
+     <tr>
+        <td>Currency Name</td>
+        <td>{{data.currency_name}}</td>
+    </tr>
+     <tr>
+        <td>Languages Spoken</td>
+        <td>{{data.languages}}</td>
+    </tr>
+     <tr>
+        <td>Region Code</td>
+        <td>{{data.region_code}}</td>
+    </tr>
+     <tr>
+        <td>UTC Offset</td>
+        <td>{{data.utc_offset}}</td>
+    </tr>
+
+
+</tbody>
+
+</table>
+</center>
+</div>
+</div>
+<!--Google Map Embed iframe-->
+<div class="shadow p-3 mb-5 bg-body rounded">
+
+  <div class="mapp embed-responsive embed-responsive-21by9">
+    <iframe class="embed-responsive-item" src="{{ map_url }}" title="Google Map Location"allowfullscreen></iframe>
+  </div>
+</div>
+    <!--Local js-->
+    <script src="{% static 'js/index.js' %}"></script>
+</div>
+</body>
+
+
+
+
+
+</html>
